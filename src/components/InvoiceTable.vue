@@ -7,10 +7,10 @@
       <table>
         <tr class="table__header">
           <th></th>
-          <th>Product name</th>
-          <th>Price</th>
-          <th>Qta</th>
-          <th>Sum</th>
+          <th class="table__header-item">Product name</th>
+          <th class="table__header-item">Price</th>
+          <th class="table__header-item">Qta</th>
+          <th class="table__header-item">Sum</th>
         </tr>
         <tr v-for="(product, idx) in products" :key="product.id">
           <td class="table__check-wrap">
@@ -22,7 +22,7 @@
           <td>{{ product.name }}</td>
           <td>${{ product.price }}</td>
           <td>{{ product.qta }}</td>
-          <td>{{ product.price * product.qta }}</td>
+          <td>${{ product.price * product.qta }}</td>
         </tr>
       </table>
     </div>
@@ -76,6 +76,11 @@ export default {
     background: #ccc;
     border-bottom: solid 1px #5a5a5a;
     font-weight: 600;
+  }
+  &__header-item {
+    @media (max-width: 400px) {
+      padding-left: 10px;
+    }
   }
   &__check-wrap {
     position: relative;
