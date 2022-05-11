@@ -43,6 +43,10 @@ export default {
   },
   methods: {
     addProduct() {
+      if (!this.qta) {
+        this.qta = 1
+      }
+
       let newProduct = {
         id: this.newId,
         name: this.name,

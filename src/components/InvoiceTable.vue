@@ -10,6 +10,7 @@
           <th>Product name</th>
           <th>Price</th>
           <th>Qta</th>
+          <th>Sum</th>
         </tr>
         <tr v-for="(product, idx) in products" :key="product.id">
           <td class="table__check-wrap">
@@ -19,8 +20,9 @@
             </label>
           </td>
           <td>{{ product.name }}</td>
-          <td>{{ product.price }}</td>
+          <td>${{ product.price }}</td>
           <td>{{ product.qta }}</td>
+          <td>{{ product.price * product.qta }}</td>
         </tr>
       </table>
     </div>
@@ -50,7 +52,7 @@ export default {
     productsTotal() {
       let sum = 0
       for (let i = 0; i < this.products.length; i++) {
-        sum += this.products[i].price
+        sum += this.products[i].price * this.products[i].qta
       }
       return sum
     },
@@ -113,7 +115,7 @@ table {
 th,
 td {
   text-align: left;
-  padding: 16px;
+  padding: 16px 5px 16px 16px;
   border-left: solid 1px #5a5a5a;
 }
 
@@ -126,7 +128,7 @@ tr:nth-child(even) {
 .checkbox__wrap {
   position: absolute;
   top: 32%;
-  left: 32%;
+  left: 24%;
   cursor: pointer;
   font-size: 22px;
   -webkit-user-select: none;
@@ -136,7 +138,7 @@ tr:nth-child(even) {
 
   @media (max-width: 450px) {
     top: 32%;
-    left: 22%;
+    left: 10%;
   }
 }
 
